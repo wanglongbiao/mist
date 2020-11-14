@@ -1,4 +1,4 @@
-package com.wanglongbiao.mistadmin;
+package com.wanglongbiao.mist.admin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -30,10 +30,6 @@
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.security.oauth.boot</groupId>
             <artifactId>spring-security-oauth2-autoconfigure</artifactId>
             <version>2.1.2.RELEASE</version>
@@ -51,6 +47,16 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.axet</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>0.0.9</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

@@ -1,4 +1,4 @@
-package com.wanglongbiao.mistadmin.service;
+package com.wanglongbiao.mist.admin.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

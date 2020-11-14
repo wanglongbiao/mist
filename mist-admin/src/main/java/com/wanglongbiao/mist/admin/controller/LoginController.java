@@ -1,4 +1,4 @@
-package com.wanglongbiao.mistadmin.controller;
+package com.wanglongbiao.mist.admin.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
