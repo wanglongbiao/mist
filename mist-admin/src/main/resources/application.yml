@@ -4,15 +4,23 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.alibaba.druid.proxy.DruidDriver
-    url: jdbc:mysql://localhost
+    url: jdbc:mysql://192.168.100.200
     username: root
     password: root
     druid:
-      filters: stat,wall,log4j,config
+      #      filters: stat, wall, log4j, config
       initial-size: 1
       min-idle: 1
       max-active: 100
       max-wait: 60000
       test-while-idle: true
       validation-query: select 'x'
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+  application:
+    name: mist-admin
+    #    name: ${
+#    name: @project.name@
