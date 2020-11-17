@@ -8,7 +8,6 @@
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>mist-common</artifactId>
     <packaging>jar</packaging>
     <dependencies>
