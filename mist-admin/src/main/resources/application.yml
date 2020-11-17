@@ -2,9 +2,11 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: mist-admin
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.100.200
+    url: jdbc:mysql://192.168.100.200/mist
     username: root
     password: root
     druid:
@@ -20,7 +22,5 @@ spring:
       host: localhost
       port: 8500
 
-  application:
-    name: mist-admin
     #    name: ${
 #    name: @project.name@
