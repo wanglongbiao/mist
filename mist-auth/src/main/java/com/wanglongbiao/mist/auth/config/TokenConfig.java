@@ -6,7 +6,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
-@Configuration
+//@Configuration
 public class TokenConfig {
     private static final String KEY = "uaa";
 
