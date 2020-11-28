@@ -20,6 +20,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String password = passwordEncoder.encode("admin");
         log.info("username {} password {}", username, password);
-        return new User(username, password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin,normal"));
+        return new User(username, password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin,normal,ROLE_role1"));
     }
 }
