@@ -18,8 +18,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("username {}",username);
-        String password = passwordEncoder.encode("passwordFromDatabase");
+        String password = passwordEncoder.encode("admin");
+        log.info("username {} password {}", username, password);
         return new User(username, password, AuthorityUtils.commaSeparatedStringToAuthorityList("admin,normal"));
     }
 }
