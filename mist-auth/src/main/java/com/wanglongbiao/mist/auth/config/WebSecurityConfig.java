@@ -21,16 +21,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManagerBean();
-    }
+//    @Override
+//    @Bean
+//    public AuthenticationManager authenticationManager() throws Exception {
+//        return super.authenticationManagerBean();
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // 使用表单登录，自定义登录页面
-        http.formLogin().loginPage("/login");
+        // 使用表单登录
+        http.formLogin()
+                .loginProcessingUrl("/login")// 对应 login.html 中表单的提交路径
+                .loginPage("/login");// 自定义登录页面
 
 //        http.
 
@@ -38,11 +40,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.authorizeRequests()
 //                .antMatchers("/login").permitAll()
 //                .anyRequest().authenticated();
+
+        // 关闭 csrf，不然表单登录不进来
+        http.csrf().disable();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
-        super.configure(auth);
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+////        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+//        super.configure(auth);
+//    }
 }
