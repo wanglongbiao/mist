@@ -1,16 +1,11 @@
 package com.wanglongbiao.mist.auth.config;
 
-import com.wanglongbiao.mist.auth.handler.MyAuthenticationSuccessHandler;
 import com.wanglongbiao.mist.auth.service.UserDetailsServiceImpl;
-import org.checkerframework.checker.units.qual.A;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
@@ -19,14 +14,11 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import javax.sql.DataSource;
 
 @Configuration
+@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
-    @Autowired
-    private DataSource dataSource;
-    @Autowired
-    private PersistentTokenRepository persistentTokenRepository;
+    private final UserDetailsServiceImpl userDetailsService;
+    private final DataSource dataSource;
+    private final PersistentTokenRepository persistentTokenRepository;
 
 //    @Bean
 //    private DataSource dataSource() {
@@ -37,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();

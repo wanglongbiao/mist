@@ -13,8 +13,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserDetailsServiceImpl(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
