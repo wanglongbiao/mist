@@ -5,3 +5,6 @@
 - 数据库 mysql
 - 基础框架 spring boot
 - 安全框架 spring security
+
+## 运行
+先安装 parnt pom 文件，安装的时候先把模块注释掉。
