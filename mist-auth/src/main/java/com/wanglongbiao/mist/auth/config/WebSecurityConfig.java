@@ -13,12 +13,12 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 
 import javax.sql.DataSource;
 
-@Configuration
-@RequiredArgsConstructor
+//@Configuration
+//@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final UserDetailsServiceImpl userDetailsService;
-    private final DataSource dataSource;
-    private final PersistentTokenRepository persistentTokenRepository;
+//    private final UserDetailsServiceImpl userDetailsService;
+//    private final DataSource dataSource;
+//    private final PersistentTokenRepository persistentTokenRepository;
 
 //    @Bean
 //    private DataSource dataSource() {
@@ -33,8 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
-        jdbcTokenRepository.setDataSource(dataSource);
-        jdbcTokenRepository.setCreateTableOnStartup(true);
+//        jdbcTokenRepository.setDataSource(dataSource);
+//        jdbcTokenRepository.setCreateTableOnStartup(true);
 
         return jdbcTokenRepository;
     }
@@ -70,9 +70,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         // remember me
-        http.rememberMe()
-                .userDetailsService(userDetailsService)
-                .tokenRepository(persistentTokenRepository);
+//        http.rememberMe()
+//                .userDetailsService(userDetailsService)
+//                .tokenRepository(persistentTokenRepository);
     }
 
 

@@ -6,7 +6,6 @@
         <groupId>com.wanglongbiao</groupId>
         <artifactId>mist</artifactId>
         <version>1.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>mist-auth</artifactId>
     <version>0.0.1</version>

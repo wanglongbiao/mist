@@ -6,7 +6,6 @@
         <groupId>com.wanglongbiao</groupId>
         <artifactId>mist</artifactId>
         <version>1.0</version>
-        <relativePath/>
     </parent>
     <artifactId>mist-admin</artifactId>
     <version>0.0.1</version>
