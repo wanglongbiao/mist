@@ -22,6 +22,7 @@ import javax.sql.DataSource;
 @RequiredArgsConstructor
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+    private final DataSource dataSource;
 //    private final TokenStore tokenStore;
 //    private final AuthorizationCodeServices authorizationCodeServices;
 //    private final AuthenticationManager authenticationManager;
@@ -37,17 +38,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        super.configure(clients);
-        clients.inMemory().withClient("c1").secret("c1").scopes("all");
+        clients.jdbc(dataSource);
+//        super.configure(clients);
+//        clients.inMemory().withClient("c1").secret("c1").scopes("all");
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         super.configure(security);
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
     }
 }
