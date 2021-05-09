@@ -4,13 +4,14 @@ import lombok.SneakyThrows;
 
 /**
  * -Xss136k
+ * java.lang.StackOverflowError
  */
 public class JavaVMStackSOF {
     private int length = 1;
 
     public void stackLeak() {
         length++;
-        long a,b,c,d;
+        long a,b,c,d; // 用来增加栈帧大小
         stackLeak();
     }
 
@@ -21,7 +22,7 @@ public class JavaVMStackSOF {
             oom.stackLeak();
         } catch (Throwable e) {
             System.out.println("length " + oom.length);
-//            throw e;
+            System.out.println(e.toString());
         }
     }
 }

@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * -Xss2m
  * cpu 100% 功耗+50w 挺费电的
+ * Exception in thread "main" java.lang.OutOfMemoryError: unable to create native thread: possibly out of memory or process/resource limits reached
  */
 public class JavaVMStackOOM {
     public static void main(String[] args) {
