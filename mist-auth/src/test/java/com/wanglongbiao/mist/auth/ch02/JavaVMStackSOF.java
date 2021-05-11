@@ -1,4 +1,4 @@
-package com.wanglongbiao.mist.auth;
+package com.wanglongbiao.mist.auth.ch02;
 
 import lombok.SneakyThrows;
 

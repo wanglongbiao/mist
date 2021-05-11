@@ -1,4 +1,4 @@
-package com.wanglongbiao.mist.auth;
+package com.wanglongbiao.mist.auth.ch02;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;

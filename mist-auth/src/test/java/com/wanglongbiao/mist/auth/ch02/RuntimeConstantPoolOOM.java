@@ -1,4 +1,4 @@
-package com.wanglongbiao.mist.auth;
+package com.wanglongbiao.mist.auth.ch02;
 
 /**
  * 堆上可能有多个 "java" 字符串实例，而 intern 只记录第一个实例的引用
