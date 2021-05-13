@@ -9,10 +9,14 @@ public class FinalizeEscapeGC {
     public static void main(String[] args) {
         SAVE_HOOK = new FinalizeEscapeGC();
         SAVE_HOOK = null;
+        System.out.println(SAVE_HOOK == null);// true
+        System.out.println(SAVE_HOOK != null);// false
         System.gc();
         Thread.sleep(1000);
+        System.out.println(SAVE_HOOK != null);// false
         if (SAVE_HOOK != null) {// ?
             SAVE_HOOK.isAlive();
+            System.out.println("为什么这里执行了？");
         } else {
             System.out.println("no, I'm dead!");
         }
