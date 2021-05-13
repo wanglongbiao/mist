@@ -3,26 +3,26 @@ package com.wanglongbiao.mist.auth.ch03;
 import lombok.SneakyThrows;
 
 public class FinalizeEscapeGC {
-    public static FinalizeEscapeGC hook = null;
+    public static FinalizeEscapeGC SAVE_HOOK = null;
 
     @SneakyThrows
     public static void main(String[] args) {
-        hook = new FinalizeEscapeGC();
-        hook = null;
+        SAVE_HOOK = new FinalizeEscapeGC();
+        SAVE_HOOK = null;
         System.gc();
         Thread.sleep(1000);
-        if (hook != null) {// ?
-            hook.isAlive();
+        if (SAVE_HOOK != null) {// ?
+            SAVE_HOOK.isAlive();
         } else {
             System.out.println("no, I'm dead!");
         }
 
         // second time
-        hook = null;
+        SAVE_HOOK = null;
         System.gc();
         Thread.sleep(1000);
-        if (hook != null) {
-            hook.isAlive();
+        if (SAVE_HOOK != null) {
+            SAVE_HOOK.isAlive();
         } else {
             System.out.println("no, I'm dead at last!");
         }
@@ -36,6 +36,6 @@ public class FinalizeEscapeGC {
     protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("finalize method executed.");
-        FinalizeEscapeGC.hook = this;
+        FinalizeEscapeGC.SAVE_HOOK = this;
     }
 }
