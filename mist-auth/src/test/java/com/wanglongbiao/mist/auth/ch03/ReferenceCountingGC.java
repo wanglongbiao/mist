@@ -22,14 +22,15 @@ public class ReferenceCountingGC {
      */
     public static void testAllocation() {
         System.out.println("1");
-        byte[] allocation1 = new byte[2 * _1MB];
+        byte[] allocation1 = new byte[4 * _1MB];
         System.out.println("2");
-        byte[] allocation2 = new byte[2 * _1MB];
+        byte[] allocation2 = new byte[4 * _1MB];
         System.out.println("3");
-        byte[] allocation3 = new byte[2 * _1MB];
+        byte[] allocation3 = new byte[4 * _1MB];
         System.out.println("4");
         byte[] allocation4 = new byte[4 * _1MB];
         System.out.println("5");
+
         /**
          * jdk 16:
          * [0.002s][info][gc] Using G1
@@ -73,13 +74,20 @@ public class ReferenceCountingGC {
          *
          * Process finished with exit code 0
          */
+        /**
+         * print((0x0000000100000000 - 0x00000000ff600000) / 1024) # young 10m = eden + from + to
+         * print((0x00000000ffe00000 - 0x00000000ff600000) / 1024) # eden 8192k
+         * print((0x00000000ffda1f08 - 0x00000000ff600000) / 1024) # eden 7815 used 95.4%
+         * print((0x00000000fff00000 - 0x00000000ffe00000) / 1024 ** 2) # from 1m
+         * print((0x0000000100000000 - 0x00000000fff00000) / 1024 ** 2) # to 1m
+         */
     }
 
     public static void main(String[] args) throws InterruptedException {
 //        ReferenceCountingGC.testGC();
         System.out.println("main start");
         ReferenceCountingGC.testAllocation();
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("main end");
     }
 }
