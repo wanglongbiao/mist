@@ -1,5 +1,7 @@
 package com.wanglongbiao.mist.auth.ch03;
 
+import java.util.concurrent.TimeUnit;
+
 public class ReferenceCountingGC {
     private static final int _1MB = 1024 * 1024;
     private Object instance = null;
@@ -20,15 +22,17 @@ public class ReferenceCountingGC {
      */
     public static void testAllocation() {
         System.out.println("1");
-        byte[] allocation1 = new byte[2 * _1MB];
+        byte[] allocation1 = new byte[4 * _1MB];
         System.out.println("2");
-        byte[] allocation2 = new byte[2 * _1MB];
+        byte[] allocation2 = new byte[4 * _1MB];
         System.out.println("3");
-        byte[] allocation3 = new byte[2 * _1MB];
+        byte[] allocation3 = new byte[4 * _1MB];
         System.out.println("4");
         byte[] allocation4 = new byte[4 * _1MB];
         System.out.println("5");
+
         /**
+         * jdk 16:
          * [0.002s][info][gc] Using G1
          * [0.144s][info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 10M->7M(20M) 3.451ms
          * 1
@@ -48,12 +52,42 @@ public class ReferenceCountingGC {
          * [0.155s][info][gc] GC(6) Concurrent Cycle 3.683ms
          * Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
          */
+        /**
+         * jdk 8:
+         * main start
+         * 1
+         * [GC (Allocation Failure) [PSYoungGen: 6573K->992K(9216K)] 6573K->1738K(19456K), 0.0019632 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+         * 2
+         * 3
+         * 4
+         * 5
+         * main end
+         * Heap
+         *  PSYoungGen      total 9216K, used 8808K [0x00000000ff600000, 0x0000000100000000, 0x0000000100000000)
+         *   eden space 8192K, 95% used [0x00000000ff600000,0x00000000ffda1f00,0x00000000ffe00000)
+         *   from space 1024K, 96% used [0x00000000ffe00000,0x00000000ffef83e8,0x00000000fff00000)
+         *   to   space 1024K, 0% used [0x00000000fff00000,0x00000000fff00000,0x0000000100000000)
+         *  ParOldGen       total 10240K, used 4841K [0x00000000fec00000, 0x00000000ff600000, 0x00000000ff600000)
+         *   object space 10240K, 47% used [0x00000000fec00000,0x00000000ff0ba528,0x00000000ff600000)
+         *  Metaspace       used 4040K, capacity 4572K, committed 4864K, reserved 1056768K
+         *   class space    used 442K, capacity 460K, committed 512K, reserved 1048576K
+         *
+         * Process finished with exit code 0
+         */
+        /**
+         * print((0x0000000100000000 - 0x00000000ff600000) / 1024) # young 10m = eden + from + to
+         * print((0x00000000ffe00000 - 0x00000000ff600000) / 1024) # eden 8192k
+         * print((0x00000000ffda1f08 - 0x00000000ff600000) / 1024) # eden 7815 used 95.4%
+         * print((0x00000000fff00000 - 0x00000000ffe00000) / 1024 ** 2) # from 1m
+         * print((0x0000000100000000 - 0x00000000fff00000) / 1024 ** 2) # to 1m
+         */
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 //        ReferenceCountingGC.testGC();
-        System.out.println("m1");
+        System.out.println("main start");
         ReferenceCountingGC.testAllocation();
-        System.out.println("m2");
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("main end");
     }
 }
