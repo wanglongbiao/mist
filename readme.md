@@ -1,6 +1,11 @@
 # mist 后台管理系统
 本系统基于 spring boot/spring security 的微服务框架，基于 docker 部署。
 
+- mist-auth, 用户认证
+- mist-gateway, 网关
+- mist-admin, 后台管理前端
+- mist-play, 用来测试各种想法
+
 用到的组件有：
 - 数据库 mysql
 - 基础框架 spring boot
