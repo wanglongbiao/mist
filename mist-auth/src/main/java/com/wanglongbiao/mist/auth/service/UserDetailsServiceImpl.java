@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
-@Service
+//@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 

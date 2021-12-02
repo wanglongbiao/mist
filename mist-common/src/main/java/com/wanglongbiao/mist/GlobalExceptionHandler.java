@@ -1,6 +1,8 @@
 package com.wanglongbiao.mist;
 
 import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,7 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-@Log4j
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

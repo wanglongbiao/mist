@@ -18,9 +18,9 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 
 import javax.sql.DataSource;
 
-@Configuration
+//@Configuration
 @RequiredArgsConstructor
-@EnableAuthorizationServer
+//@EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     private final DataSource dataSource;
 //    private final TokenStore tokenStore;

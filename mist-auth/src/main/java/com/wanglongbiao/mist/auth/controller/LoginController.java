@@ -5,11 +5,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class LoginController {
 
-    @PostMapping("/")
+    @GetMapping("/")
     public String index() {
-        return "redirect:index";
+        return "index";
+    }
+
+    @GetMapping("/success")
+    public String hi() {
+        return "success page";
+    }
+    @GetMapping("/error")
+    public String error() {
+        return "error page";
     }
 }
