@@ -6,7 +6,36 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 USE `mist`;
+-- ----------------------------
+-- Table structure for sys_user
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user` (
+           `user_id` int NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+           `username` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户名',
+           `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
+           `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+           `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='用户表';
 
+DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role` (
+                            `role_id` int NOT NULL AUTO_INCREMENT,
+                            `role_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                            `role_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                            `role_desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+                            `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+                            `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+                            PRIMARY KEY (`role_id`),
+                            UNIQUE KEY `role_idx1_role_code` (`role_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='系统角色表';
+
+DROP TABLE IF EXISTS `sys_user_role`;
+CREATE TABLE `sys_user_role` (
+                                 `user_id` int NOT NULL COMMENT '用户ID',
+                                 `role_id` int NOT NULL COMMENT '角色ID',
+                                 PRIMARY KEY (`user_id`,`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='用户角色表';
 -- ----------------------------
 -- Table structure for sys_dept
 -- ----------------------------

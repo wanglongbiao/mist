@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,10 +17,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    private final DataSource dataSource;
 //    private final PersistentTokenRepository persistentTokenRepository;
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    //    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 //    @Bean
 //    public PersistentTokenRepository persistentTokenRepository() {
@@ -37,8 +39,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // 使用表单登录
-        http.formLogin();
+//        http
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
+//                .and().formLogin();
 //                .loginPage("/login")// 自定义登录页面
 //                .loginProcessingUrl("/login")// 对应 login.html 中表单的提交路径
 //                .successForwardUrl("/");
@@ -67,9 +72,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-//    @Override
+    //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 ////        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
 //        super.configure(auth);
 //    }
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("admin"));
+        System.out.println(new BCryptPasswordEncoder().encode("user"));
+    }
 }

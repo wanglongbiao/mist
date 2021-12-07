@@ -12,3 +12,6 @@ spring:
     request-context-attribute: request
   redis:
     host: 192.168.100.200
+  security:
+    user:
+      password: password
