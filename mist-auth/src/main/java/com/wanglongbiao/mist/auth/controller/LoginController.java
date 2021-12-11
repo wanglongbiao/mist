@@ -15,6 +15,7 @@ public class LoginController {
 
     @GetMapping("/success")
     public String hi() {
+        System.out.println("hello there");
         return "success page";
     }
     @GetMapping("/error")

@@ -18,9 +18,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    private final PersistentTokenRepository persistentTokenRepository;
 
     //    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
 //    @Bean
 //    public PersistentTokenRepository persistentTokenRepository() {
@@ -39,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http.formLogin().and().csrf().disable();
 //        http
 //                .authorizeRequests()
 //                .anyRequest()
@@ -50,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .permitAll();// 登录成功后的跳转页面
 //                .successHandler(new MyAuthenticationSuccessHandler("https://qq.com"));
 
-        super.configure(http);
+        super.configure(http);// 开启 login logout
 
 //        http.
 
@@ -63,7 +64,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated();// 一般放到最后
 //
 //        // 关闭 csrf，不然表单登录不进来
-//        http.csrf().disable();
 
         // remember me
 //        http.rememberMe()

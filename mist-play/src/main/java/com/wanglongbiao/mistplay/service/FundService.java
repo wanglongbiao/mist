@@ -23,4 +23,8 @@ public interface FundService {
      */
     void calculateByNo(String fundNo, String startDate);
 
+    /**
+     * 根据用户关注的 etf 估算净值，计算出跌幅、涨幅最大的几个，推送给用户
+     */
+    void noticeEstimated();
 }
