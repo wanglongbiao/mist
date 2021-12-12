@@ -17,6 +17,9 @@ class FundServiceImplTest {
     @Test
     public void test1() {
         log.info("start");
-        fundService.queryNetValueListByNoAndStartDate("005918", "2018-01-01");
+//        fundService.queryNetValueListByNoAndStartDate("005918", "2018-01-01");
+//        fundService.queryNetValueListByNoAndStartDate("004348", "2010-01-01");
+//        fundService.calculateByNo("004348", "2021-01-01");
+        fundService.calculateByNo("005918", "2021-02-01");
     }
 }
