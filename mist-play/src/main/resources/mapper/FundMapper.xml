@@ -9,6 +9,7 @@
         <result column="net_date" jdbcType="DATE" property="netDate"/>
         <result column="net_value" jdbcType="DECIMAL" property="netValue"/>
         <result column="accumulated_value" jdbcType="DECIMAL" property="accumulatedValue"/>
+        <result column="growth_rate" jdbcType="DECIMAL" property="growthRate"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>

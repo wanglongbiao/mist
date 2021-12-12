@@ -34,7 +34,7 @@ public class FundServiceImpl extends ServiceImpl<FundMapper, Fund> implements Fu
         long currentTimeMillis = System.currentTimeMillis();
         int pageIndex = 1;
         int pageSize = 20;
-        String url = "http://api.fund.eastmoney.com/f10/lsjz?fundCode={1}&pageIndex={3}&pageSize={4}&startDate={2}&endDate=&_=" + currentTimeMillis;
+        String url = "http://api.fund.eastmoney.com/f10/lsjz?fundCode={1}&startDate={2}&pageIndex={3}&pageSize={4}&endDate=&_=" + currentTimeMillis;
         HttpHeaders headers = new HttpHeaders();
         headers.set("Host", "api.fund.eastmoney.com");
         headers.set("Proxy-Connection", "keep-alive");
@@ -50,8 +50,8 @@ public class FundServiceImpl extends ServiceImpl<FundMapper, Fund> implements Fu
         assert body != null;
         List<Lsjzlist> list = body.getData().getLsjzList();
         int totalCount = body.getTotalCount();
-        for (int i = 2999; i <= totalCount / pageSize + (totalCount % pageSize == 0 ? 0 : 1); i++) {
-            TimeUnit.SECONDS.sleep(1);
+        for (int i = 2; i <= totalCount / pageSize + (totalCount % pageSize == 0 ? 0 : 1); i++) {
+            TimeUnit.MILLISECONDS.sleep(567);
             log.info("request page {}", i);
             EasyMoneyFund fundData = restTemplate.exchange(url, HttpMethod.GET, httpEntity, EasyMoneyFund.class, fundCode, startDate, pageIndex, pageSize).getBody();
             assert fundData != null;
