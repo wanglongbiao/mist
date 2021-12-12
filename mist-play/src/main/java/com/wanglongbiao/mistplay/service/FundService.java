@@ -1,11 +1,14 @@
 package com.wanglongbiao.mistplay.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.wanglongbiao.mistplay.entity.Fund;
+
 import java.util.List;
 
 /**
  * 基金查询、模拟计算服务接口
  */
-public interface FundService {
+public interface FundService extends IService<Fund> {
     /**
      * 查询某个基金的历史净值
      *

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wanglongbiao.mistplay.mapper.FundMapper">
+    <resultMap id="BaseResultMap" type="com.wanglongbiao.mistplay.entity.Fund">
+        <id column="fund_id" jdbcType="BIGINT" property="fundId"/>
+        <result column="fund_code" jdbcType="VARCHAR" property="fundCode"/>
+        <result column="fund_name" jdbcType="VARCHAR" property="fundName"/>
+        <result column="net_date" jdbcType="DATE" property="netDate"/>
+        <result column="net_value" jdbcType="DECIMAL" property="netValue"/>
+        <result column="accumulated_value" jdbcType="DECIMAL" property="accumulatedValue"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+</mapper>
