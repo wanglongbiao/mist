@@ -34,7 +34,7 @@ public class FundServiceImpl extends ServiceImpl<FundMapper, Fund> implements Fu
 
     @SneakyThrows
     @Override
-    public List<?> queryNetValueListByNoAndStartDate(String fundCode, String startDate) {
+    public List<?> queryNetValueListByNoAndStartDate(String fundCode, String startDate, String fundName) {
         long currentTimeMillis = System.currentTimeMillis();
         int pageIndex = 1;
         int pageSize = 20;
@@ -65,7 +65,7 @@ public class FundServiceImpl extends ServiceImpl<FundMapper, Fund> implements Fu
         List<Fund> fundList = new ArrayList<>();
         list.forEach(data -> fundList.add(Fund.builder()
                 .fundCode(fundCode)
-                .fundName("天弘沪深300ETF联接C")
+                .fundName(fundName)
                 .netValue(data.getDwjz())
                 .accumulatedValue(data.getLjjz())
                 .growthRate(data.getJzzzl())
@@ -82,7 +82,7 @@ public class FundServiceImpl extends ServiceImpl<FundMapper, Fund> implements Fu
     @Override
     public void calculateByNo(String fundCode, String startDate) {
         List<Fund> list = list(Wrappers.lambdaQuery(Fund.class).eq(Fund::getFundCode, fundCode).ge(Fund::getNetDate, LocalDate.parse(startDate)));
-        double original = 10000; // 假设有 1w 本金
+        double original = 100000; // 假设有 1w 本金
         double capital = original;
         double stake = 0;
         int up = 0, down = 0;
@@ -95,13 +95,13 @@ public class FundServiceImpl extends ServiceImpl<FundMapper, Fund> implements Fu
             double accumulatedValue = fund.getAccumulatedValue();
             if (growthRate < 0) {
                 down++;
-                double buyIn = growthRate * 200 * -1; // 买入多少元 = 降幅 x 基数
+                double buyIn = growthRate * 100 * -1; // 买入多少元 = 降幅 x 基数
                 stake += (buyIn / accumulatedValue); // 计算买入的份额
                 capital -= buyIn; // 从本金扣除
                 log.info("{}, {}%, 买入 {}$, 余额 {}, 持有份额 {}, 总市值：{}", fund.getNetDate(), growthRate, buyIn, capital, stake, stake * accumulatedValue + capital);
             } else if (growthRate > 0) {
                 up++;
-//                if(up != 0) continue;
+                if(up != 0) continue;
                 double soldOut = growthRate * 100; // 卖出多少钱的
                 double soldOutStake = soldOut / accumulatedValue; // 卖出多少份
                 if (stake > soldOutStake) {

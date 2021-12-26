@@ -14,9 +14,10 @@ public interface FundService extends IService<Fund> {
      *
      * @param fundNo    基金编码
      * @param startDate 开始日期, yyyy-MM-dd
+     * @param fundName
      * @return 基金每天的净值
      */
-    List<?> queryNetValueListByNoAndStartDate(String fundNo, String startDate);
+    List<?> queryNetValueListByNoAndStartDate(String fundNo, String startDate, String fundName);
 
     /**
      * 根据基金编码，模拟计算投资收益
