@@ -1,12 +1,9 @@
 package com.wanglongbiao.mist.gateway;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
+//@SpringBootTest
 class MistGatewayApplicationTests {
 
-    @Test
+    //    @Test
     void contextLoads() {
     }
 
