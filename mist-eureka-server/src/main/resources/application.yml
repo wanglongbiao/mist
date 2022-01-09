@@ -3,3 +3,16 @@ server:
 spring:
   application:
     name: mist-eureka-server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+logging:
+  pattern:
+    console: "%date %clr(%5level) - %m%n"
+  level:
+    root: debug
