@@ -15,7 +15,7 @@ import lombok.SneakyThrows;
 public class IndexController {
     @Value("${server.port}")
     private int port;
-    private String url = "http://MIST-PAYMENT";
+    private String url = "http://mist-payment";
 
     private final RestTemplate restTemplate;
 
