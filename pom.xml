@@ -13,7 +13,6 @@
         <module>mist-auth</module>
         <module>mist-gateway</module>
         <module>mist-play</module>
-        <module>mist-eureka-server</module>
         <module>mist-payment</module>
     </modules>
     <properties>

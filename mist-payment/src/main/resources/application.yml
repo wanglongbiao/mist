@@ -3,11 +3,9 @@ server:
 spring:
   application:
     name: mist-payment
-eureka:
-  client:
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:7001/eureka
-    register-with-eureka: true
-  instance:
-    prefer-ip-address: true
+  cloud:
+    zookeeper:
+      connect-string: virtual:2181
+logging:
+  pattern:
+    console: "%date %clr(%5level) - %m%n"
