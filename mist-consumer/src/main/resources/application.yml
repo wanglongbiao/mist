@@ -1,0 +1,9 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: mist-consumer
+  cloud:
+    consul:
+      host: vm
+      port: 8500

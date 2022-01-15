@@ -4,8 +4,11 @@ spring:
   application:
     name: mist-payment
   cloud:
-    zookeeper:
-      connect-string: virtual:2181
+    consul:
+      host: vm
+      port: 8500
+      discovery:
+        health-check-critical-timeout: 10s
 logging:
   pattern:
     console: "%date %clr(%5level) - %m%n"
