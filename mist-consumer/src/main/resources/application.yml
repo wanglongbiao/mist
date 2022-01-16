@@ -4,6 +4,11 @@ spring:
   application:
     name: mist-consumer
   cloud:
-    consul:
-      host: vm
-      port: 8500
+    nacos:
+      discovery:
+        server-addr: vm:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

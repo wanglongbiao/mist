@@ -1,0 +1,12 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: mist-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: vm:8848
+      config:
+        server-addr: vm:8848
+        file-extension: yaml

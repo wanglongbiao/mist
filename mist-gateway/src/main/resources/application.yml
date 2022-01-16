@@ -1,2 +1,14 @@
 spring:
-  name: mist-gateway
+  application:
+    name: mist-gateway
+  cloud:
+    consul:
+      host: vm
+      port: 8500
+    gateway:
+      routes:
+        - id: mist-payment
+          url: mist-payment
+
+server:
+  port: 3344
