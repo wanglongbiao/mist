@@ -4,11 +4,9 @@ spring:
   application:
     name: mist-payment
   cloud:
-    consul:
-      host: vm
-      port: 8500
+    nacos:
       discovery:
-        health-check-critical-timeout: 10s
+        server-addr: vm:8848
 logging:
   pattern:
     console: "%date %clr(%5level) - %m%n"
