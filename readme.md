@@ -1,4 +1,8 @@
-# mist 后台管理系统
+# 瓦力管理系统
+
+## 设计原则
+- 简约、简洁
+
 本系统基于 spring boot/spring security 的微服务框架，基于 docker 部署。
 
 - mist-auth, 用户认证
